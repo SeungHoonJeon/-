@@ -2,26 +2,22 @@ package java_basic_test;
 
 public class MainClass {
 	public static void main(String[] args) {
-		int num = 100; // 4byte
-		char c = 'a'; //2byte? -> c랑 좀 다름.
-		double d = 10.258; //8byte
-		boolean b = false; //1byte
+		byte a = 10;
+		int b = 10;
 		
-		String s = "Hello World!!!!";
+		System.out.println(a);
+		System.out.println(b);
 		
-		System.out.println("num="+100);
-		System.out.println("c="+c);
-		System.out.println("d="+d);
-		System.out.println("b="+b);
-		System.out.println("s="+s);
+		int c = 100; //0110 0100
+		byte c_1 = (byte)c;
+		System.out.println(c_1);
 		
-		System.out.println("--------------------------------");
-		System.out.println("byte: " + Byte.BYTES);
-		System.out.println("char: " + Character.BYTES);
-		System.out.println("int: " + Integer.BYTES);
-		System.out.println("long: " + Long.BYTES);
-		System.out.println("short: " + Short.BYTES);
-		System.out.println("double: " + Double.BYTES);
-		System.out.println("float: " + Float.BYTES);
+		int d = 1000000; // 1111 0100 0010 0100 0000
+		byte d_1 = (byte)d;
+		System.out.println(d_1); //1111 0100 0010 0100 0000 중에서 0100 0000만 처리함.  
+		
+		int f = 1000001; // 1111 0100 0010 0100 0001
+		byte f_1 = (byte)f;
+		System.out.println(f_1);  // 1111 0100 0010 0100 0001 중에서 0100 0001만 처리함.
 	}
 }
