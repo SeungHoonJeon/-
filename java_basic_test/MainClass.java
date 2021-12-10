@@ -5,32 +5,47 @@ import java.util.Scanner;
 
 public class MainClass {
 	public static void main(String[] args) {
-		int arr1[] = {1,2,3,4,5};
-		int arr2[] = null;
-		int arr3[] = null;
+		Scanner input = new Scanner(System.in);
 		
-		System.out.println("length of arr1 is "+arr1.length);
-		System.out.println("value of index is "+Arrays.toString(arr1));
+		String s[] = {"전승훈","조윤성","지수용","박한수","박광렬","김경록"};
+		int[] score = new int[6];
 		
-		arr2 = Arrays.copyOf(arr1,arr1.length);
-		System.out.println("value of index is "+Arrays.toString(arr2));
-		System.out.println("address of arr2 is "+arr2);
-		System.out.println("address of arr1 is "+arr1); //address of arr1 is different its arr2
+		score[0] = 50;
+		score[1] = 60;
+		score[2] = 70;
+		score[3] = 80;
+		score[4] = 90;
+		score[5] = 100;
 		
-		arr3 = arr1;
-		System.out.println("address of arr3 is"+arr3);
-		System.out.println("address of arr1 is"+arr1); // address of arr1 is same its arr3
+		if(score[0] >= score[1]) {
+			System.out.println("전승훈이 조윤성보다 성적이 더 높습니다.");
+		}else {
+			System.out.println("조윤성이 전승훈보다 성적이 더 높습니다.");
+		}
 		
+		switch(score[0]) {
+			case 100:
+				System.out.println("A+");
+				break;
+			case 90:
+				System.out.println("A");
+				break;
+			case 80:
+				System.out.println("B+");
+				break;
+			case 70:
+				System.out.println("B");
+				break;
+			case 60:
+				System.out.println("C+");
+				break;
+			case 50:
+				System.out.println("C");
+				break;
+			default:
+				System.out.println("F");
+				break;
+		}
 		
-		int[][] arr4 = new int[2][2];
-		arr4[0][0] = 1;
-		arr4[0][1] = 2;
-		arr4[1][0] = 3;
-		arr4[1][1] = 4;
-		
-		System.out.println(arr4[0][0]);
-		System.out.println(arr4[0][1]);
-		System.out.println(arr4[1][0]);
-		System.out.println(arr4[1][1]);
 	}
 }
