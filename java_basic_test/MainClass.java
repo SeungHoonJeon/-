@@ -1,53 +1,57 @@
 package java_basic_test;
 
+import java.util.Scanner;
+
 public class MainClass {
 	public static void main(String[] args) {
-		int x = 10;
-		int y= 20;
-		System.out.println("x= "+x);
-		System.out.println("y= "+y);
+		int[] arr = new int[5];
+		arr[0] = 0;
+		arr[1] = 1;
+		arr[2] = 2;
+		arr[3] = 3;
+		arr[4] = 4;
 		
-		x = y;
+		System.out.println("arr[0]:"+arr[0]);
+		System.out.println("arr[1]:"+arr[1]);
+		System.out.println("arr[2]:"+arr[2]);
+		System.out.println("arr[3]:"+arr[3]);
+		System.out.println("arr[4]:"+arr[4]);
+		//System.out.println("arr[0]:"+arr[5]); //err: Index 5 out of bounds for length 5
 		
-		System.out.println("x="+x);
+		String[] name = {"전승훈","조윤성","박한수","지수용","박광렬","김경록"};
+		int[] score = new int[6];
+		float avg;
+		Scanner input = new Scanner(System.in); 
 		
-		System.out.println("x+y="+(x+y));
-		System.out.println("x-y="+(x-y));
-		System.out.println("x*y="+(x*y));
-		System.out.println("x/y="+(x/y));
-		System.out.println("x%y="+(x%y));
+		System.out.printf("%s의 점수를 입력하시오. :",name[0]);
+		score[0] = input.nextInt();
 		
-		x+=10;
-		System.out.printf("x = %d \n", x);
+		System.out.printf("%s의 점수를 입력하시오. :",name[1]);
+		score[1] = input.nextInt();
 		
-		System.out.println("x>y : " + (x>y));
-		System.out.println("x<y : " + (x<y));
-		System.out.println("x>=y : " + (x>=y));
-		System.out.println("x<=y : " + (x<=y));
-		System.out.println("x==y : " + (x==y));
-		System.out.println("x!=y : " + (x!=y));
+		System.out.printf("%s의 점수를 입력하시오. :",name[2]);
+		score[2] = input.nextInt();
 		
-		x++;
-		System.out.println("x ="+x);
+		System.out.printf("%s의 점수를 입력하시오. :",name[3]);
+		score[3] = input.nextInt();
 		
-		boolean b1 = false;
-		boolean b2 = true;
+		System.out.printf("%s의 점수를 입력하시오. :",name[4]);
+		score[4] = input.nextInt();
 		
-		System.out.println("b1 && b2 : "+(b1&&b2));
-		System.out.println("b1 || b2 : "+(b1||b2));
-		System.out.println("!b1 : "+(!b1));
-		System.out.println("!b2 : "+(!b2));
+		System.out.printf("%s의 점수를 입력하시오. :",name[5]);
+		score[5] = input.nextInt();
 		
-		x = 10; y = 20;
-		int result = 0;
-		result = (x>y)?100:200;
-		System.out.println("result: "+ result);
+		System.out.printf("%s 점수 : %d \n", name[0], score[0]);
+		System.out.printf("%s 점수 : %d \n", name[1], score[1]);
+		System.out.printf("%s 점수 : %d \n", name[2], score[2]);
+		System.out.printf("%s 점수 : %d \n", name[3], score[3]);
+		System.out.printf("%s 점수 : %d \n", name[4], score[4]);
+		System.out.printf("%s 점수 : %d \n", name[5], score[5]);
 		
-		result = (x<y)?100:200;
-		System.out.println("result: "+ result);
+		avg = (float)(score[0]+score[1]+score[2]+score[3]+score[4]+score[5]);
+		System.out.printf("-------------평균 : %.2f \n",avg);
 		
-		result = (x==y)?100:200;
-		System.out.println("result: "+ result);
+		input.close();
 		
 	}
 }
