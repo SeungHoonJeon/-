@@ -1,36 +1,18 @@
 package java_basic_test;
 
-import java.util.Arrays;
-import java.util.Scanner;
-
 public class MainClass {
 	public static void main(String[] args) {
-		Grandeur myCar1 = new Grandeur();
-		myCar1.color = "red";
-		myCar1.gear = "auto";
-		myCar1.price = 100;
+		ChildClass child1 = new ChildClass();
+		child1.name ="jun";
+		child1.gender = "M";
+		child1.age = 50;
 		
-		myCar1.run();
-		myCar1.stop();
-		myCar1.info();
+		child1.getInfo();
 		
+		ChildClass child2 = new ChildClass();
+		child2.setInfo("park", "M", 50);
+		child2.getInfo();
 		
-		Grandeur myCar2 = new Grandeur();
-		myCar1.color = "yellow";
-		myCar1.gear = "auto";
-		myCar1.price = 500;
-		
-		myCar1.run();
-		myCar1.stop();
-		myCar1.info();
-		
-		Bicycle myBicycle = new Bicycle();
-		myBicycle.color = "red";
-		myBicycle.price = 100;
-		
-		myBicycle.info();
-		
-		Bicycle myBicycle2 = new Bicycle("red",100);
-		myBicycle2.info();
+		child2.good();
 	}
 }
