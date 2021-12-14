@@ -2,16 +2,22 @@ package java_basic_test;
 
 public class MainClass {
 	public static void main(String[] args) {
-		ObjectClass obj1 = new ObjectClass();
-		ObjectClass obj2 = new ObjectClass();
-		ObjectClass obj3 = new ObjectClass();
+		ObjectEx obj1 = new ObjectEx();
+		System.out.println();
 		
-		System.out.println("obj1: "+obj1);
-		System.out.println("obj1: "+obj2);
-		System.out.println("obj1: "+obj3);
+		ObjectEx obj2 = new ObjectEx(10);
 		
-		obj1.getInfo();
-		obj1 = null;
-		obj1.getInfo();
+		int arr[] = {10,20,30};
+		ObjectEx obj3 = new ObjectEx("Java", arr);
+		
+		ObjectEx obj4;
+		
+		obj4 = new ObjectEx();
+		obj4 = new ObjectEx();
+		
+		System.gc();
+		
+		int ints[] = {10,20,30};
+		ObjectEx obj5 = new ObjectEx(10, "JAVA", ints);
 	}
 }
