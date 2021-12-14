@@ -2,17 +2,16 @@ package java_basic_test;
 
 public class MainClass {
 	public static void main(String[] args) {
-		ChildClass child1 = new ChildClass();
-		child1.name ="jun";
-		child1.gender = "M";
-		child1.age = 50;
+		ObjectClass obj1 = new ObjectClass();
+		ObjectClass obj2 = new ObjectClass();
+		ObjectClass obj3 = new ObjectClass();
 		
-		child1.getInfo();
+		System.out.println("obj1: "+obj1);
+		System.out.println("obj1: "+obj2);
+		System.out.println("obj1: "+obj3);
 		
-		ChildClass child2 = new ChildClass();
-		child2.setInfo("park", "M", 50);
-		child2.getInfo();
-		
-		child2.good();
+		obj1.getInfo();
+		obj1 = null;
+		obj1.getInfo();
 	}
 }
