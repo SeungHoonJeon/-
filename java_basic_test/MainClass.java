@@ -1,11 +1,20 @@
 package java_basic_test;
 
+import com.java.toy.*;
+
 public class MainClass {
 	public static void main(String[] args) {
-		InterfaceA ia = new InterfaceClass();
-		InterfaceB ib = new InterfaceClass();
+		Toy robot = new ToyRobot();
+		Toy airplane = new ToyAirplane();
 		
-		ia.funA();
-		ib.funB();
+		Toy toys[] = {robot, airplane};
+		
+		for(int i = 0; i < toys.length; i++) {
+			toys[i].walk();
+			toys[i].run();
+			toys[i].alarm();
+			toys[i].light();
+		}
+		
 	}
 }
