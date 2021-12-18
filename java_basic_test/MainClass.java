@@ -1,5 +1,7 @@
 package java_basic_test;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -7,37 +9,36 @@ import java.io.OutputStream;
 
 public class MainClass {
 	public static void main(String[] args) {
-		InputStream inputStream = null;
-		OutputStream outputStream = null;
+		InputStream InputStream = null;
+		DataInputStream dataInputStream = null;
+		OutputStream OutputStream = null;
+		DataOutputStream dataOutputStream = null;
 		
 		try {
-			inputStream = new FileInputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\hello.txt");
-			outputStream = new FileOutputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\hello_copy.txt");
+			InputStream = new FileInputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\abc.txt");
+			dataInputStream = new DataInputStream(InputStream);
 			
-			byte[] arr = new byte[3];
+			String str = dataInputStream.readUTF();
 			
-			while(true) {
-				int len = inputStream.read(arr);
-				if(len == -1) break;
-				outputStream.write(arr,0,len);
-			}
+			OutputStream = new FileOutputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\abc_copy.txt");
+			dataOutputStream = new DataOutputStream(OutputStream);
+			
+			dataOutputStream.writeUTF(str);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			if(inputStream != null) {
-				try {
-					inputStream.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
+			try {
+				if(dataOutputStream != null) dataOutputStream.close();
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
-			if(outputStream != null) {
-				try {
-					outputStream.close();
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
+			
+			try {
+				if(dataInputStream != null) dataInputStream.close();
+			}catch(Exception e) {
+				e.printStackTrace();
 			}
+			
 		}
 	}
 }
