@@ -1,35 +1,28 @@
 package java_basic_test;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.io.OutputStream;
 
 public class MainClass {
 	public static void main(String[] args) {
-		InputStream inputStream = null;
+		OutputStream outputStream = null;
 		try {
-			inputStream = new FileInputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\hello.txt");
-			int data = 0;
-			byte[] bs = new byte[3];
+			outputStream = new FileOutputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\hello1.txt");
+			String data = "hello java world!";
+			byte[] arr = data.getBytes();
 			
-			while(true) {
-				try {
-					data = inputStream.read(bs); //3byte¾¿ ÀÐ¾î¿È.
-				}catch(IOException e) {
-					e.printStackTrace();
-				}
-				if(data == -1) break;
-				System.out.println("data : " + data);
-				for(int i=0; i<bs.length;i++) {
-					System.out.println("bs["+i+"]:"+bs[i]);
-				}
+			try {
+				outputStream.write(arr);
+			}catch(IOException e) {
+				e.printStackTrace();
 			}
 		}catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(inputStream != null) inputStream.close();
+				if(outputStream != null) outputStream.close();
 			}catch(IOException e) {
 				e.printStackTrace();
 			}
