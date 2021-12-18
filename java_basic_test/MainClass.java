@@ -1,41 +1,44 @@
 package java_basic_test;
 
+import java.util.Scanner;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.InputMismatchException;
 
 public class MainClass {
 	public static void main(String[] args) {
-		HashMap<Integer, String> map = new HashMap<Integer, String>();
-		System.out.println("map.size() : " + map.size());
+		Scanner scanner = new Scanner(System.in);
+		int i,j;
+		ArrayList<String> list = null;
 		
-		map.put(5, "Hello");
-		map.put(6, "Java");
-		map.put(7, "World");
-		System.out.println("map : " + map);
-		System.out.println("map.size() : " + map.size());
+		int[] iArr = {0,1,2,3,4};
 		
-		map.put(8, "!!");
-		System.out.println("map : " + map);
+		System.out.println("Ecexption BEFORE");
 		
-		map.put(6, "c");
-		System.out.println("map : " + map);
+		try {
+			System.out.println("input i : ");
+			i = scanner.nextInt();
+			System.out.println("input j : ");
+			j = scanner.nextInt();
+			
+			System.out.println("i/j =" + (i/j));
+			
+			for(int k=0;k<5;k++) {
+				System.out.println("iArr["+k+"] :" + iArr[k]);
+			}
+			
+			System.out.println("list.size() : " + list.size());
+			
+		}catch(InputMismatchException e) {
+			e.printStackTrace();
+		}catch(ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			System.out.println("예외가 발생해도 무조건 실행 ");
+		}
 		
-		String str = map.get(5);
-		System.out.println("map.get(5) : " + str);
+		System.out.println("Exception AFTER");
 		
-		map.remove(8);
-		System.out.println("map: " + map);
-		
-		boolean b = map.containsKey(7);
-		System.out.println("map.containsKey(7) : " + b);
-		
-		b = map.containsValue("World");
-		System.out.println("map.containsValue(\"World\") : " + b);
-		
-		map.clear();
-		System.out.println("map: "+map);
-		
-		b = map.isEmpty();
-		System.out.println("map.isEmpty(): " + b);
 	}
 }
