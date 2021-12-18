@@ -1,44 +1,34 @@
 package java_basic_test;
 
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MainClass {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int i,j;
-		ArrayList<String> list = null;
-		
-		int[] iArr = {0,1,2,3,4};
-		
-		System.out.println("Ecexption BEFORE");
-		
+		InputStream inputStream = null;
 		try {
-			System.out.println("input i : ");
-			i = scanner.nextInt();
-			System.out.println("input j : ");
-			j = scanner.nextInt();
+			inputStream = new FileInputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\hello.txt");
+			int data = 0;
 			
-			System.out.println("i/j =" + (i/j));
-			
-			for(int k=0;k<5;k++) {
-				System.out.println("iArr["+k+"] :" + iArr[k]);
+			while(true) {
+				try {
+					data = inputStream.read();
+				}catch(IOException e) {
+					e.printStackTrace();
+				}
+				if(data == -1) break;
+				System.out.println("data : " + data);
 			}
-			
-			System.out.println("list.size() : " + list.size());
-			
-		}catch(InputMismatchException e) {
-			e.printStackTrace();
-		}catch(ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
-		}catch(Exception e) {
+		}catch(FileNotFoundException e) {
 			e.printStackTrace();
 		}finally {
-			System.out.println("예외가 발생해도 무조건 실행 ");
+			try {
+				if(inputStream != null) inputStream.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		System.out.println("Exception AFTER");
-		
 	}
 }
