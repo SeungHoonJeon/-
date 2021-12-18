@@ -2,43 +2,58 @@ package java_basic_test;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 public class MainClass {
 	public static void main(String[] args) {
-		InputStream InputStream = null;
+		ServerSocket serverSocket = null;
+		Socket socket = null;
+		
+		InputStream inputStream = null;
 		DataInputStream dataInputStream = null;
-		OutputStream OutputStream = null;
+		
+		OutputStream outputStream = null;
 		DataOutputStream dataOutputStream = null;
 		
 		try {
-			InputStream = new FileInputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\abc.txt");
-			dataInputStream = new DataInputStream(InputStream);
+			serverSocket = new ServerSocket(9000);
+			System.out.println("클라이언트 맞을 준비 ~~");
 			
-			String str = dataInputStream.readUTF();
+			socket = serverSocket.accept();
+			System.out.println("클라이언트 연결~~");
+			System.out.println("socket"+socket);
 			
-			OutputStream = new FileOutputStream("C:\\Users\\TunaF\\Resilio Sync\\java\\java_baisc_grammer\\java_basic_test\\src\\java_basic_test\\abc_copy.txt");
-			dataOutputStream = new DataOutputStream(OutputStream);
+			inputStream = socket.getInputStream();
+			dataInputStream = new DataInputStream(inputStream);
 			
-			dataOutputStream.writeUTF(str);
+			outputStream = socket.getOutputStream();
+			dataOutputStream = new DataOutputStream(outputStream);
+			
+			while(true) {
+				String clientMessage = dataInputStream.readUTF();
+				System.out.println("clientMessage:"+clientMessage);
+				
+				dataOutputStream.writeUTF("메시지 전송 완료~~");
+				dataOutputStream.flush();
+				
+				if(clientMessage.equals("STOP"))break;
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(dataOutputStream != null) dataOutputStream.close();
-			}catch(Exception e) {
-				e.printStackTrace();
-			}
-			
-			try {
 				if(dataInputStream != null) dataInputStream.close();
+				if(inputStream != null) inputStream.close();
+				if(dataOutputStream != null) dataOutputStream.close();
+				if(outputStream != null) outputStream.close();
+				
+				if(socket != null) socket.close();	
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
-			
 		}
 	}
 }
